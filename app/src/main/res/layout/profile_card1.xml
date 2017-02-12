@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/profile_layout_dots"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_above="@id/btn_fbLogin"
+        android:layout_below="@+id/profile_view_pager"
+        android:gravity="center"
+        android:orientation="horizontal" />
+
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/profile_view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="250dp" />
+
+    <LinearLayout
+        android:id="@+id/bottom_panel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/profile_layout_dots"
+        android:orientation="vertical"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp">
+
+
+        <TextView
+            android:id="@+id/lbl_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Nandita"
+            android:textColor="@color/black"
+            android:textSize="26dp" />
+
+        <TextView
+            android:id="@+id/lbl_status"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:paddingTop="5dp"
+            android:text="online / 24 / FEMALE / STRAIGHT"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/lbl_city"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:paddingTop="5dp"
+            android:text="AHMEDABAD IND"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/lbl_display_status"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:paddingTop="5dp"
+            android:text="Hey there"
+            android:textColor="@color/black" />
+
+    </LinearLayout>
+
+</RelativeLayout>

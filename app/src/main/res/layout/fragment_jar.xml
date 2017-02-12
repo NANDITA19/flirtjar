@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -8,7 +7,7 @@
     <com.mindorks.placeholderview.SwipePlaceHolderView
         android:id="@+id/swipeview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
     <LinearLayout
         android:id="@+id/ll_jarOptionsContainer"
@@ -25,10 +24,11 @@
             android:id="@+id/ib_return"
             android:layout_width="0dp"
             android:layout_height="35dp"
+            android:layout_alignParentBottom="true"
             android:layout_weight="1"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:scaleType="centerInside"
-            android:src="@mipmap/ic_return"/>
+            android:src="@mipmap/ic_return" />
 
         <ImageButton
             android:id="@+id/ibtn_dislike"
@@ -37,7 +37,7 @@
             android:layout_weight="1"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:scaleType="centerInside"
-            android:src="@mipmap/ic_dislike"/>
+            android:src="@mipmap/ic_dislike" />
 
         <ImageButton
             android:id="@+id/ibtn_gift"
@@ -46,7 +46,7 @@
             android:layout_weight="1"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:scaleType="centerInside"
-            android:src="@mipmap/ic_gift"/>
+            android:src="@mipmap/ic_gift" />
 
         <ImageButton
             android:id="@+id/ibtn_like"
@@ -54,7 +54,7 @@
             android:layout_height="50dp"
             android:layout_weight="1"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@mipmap/ic_like"/>
+            android:src="@mipmap/ic_like" />
 
         <ImageButton
             android:id="@+id/ibtn_super_like"
@@ -63,7 +63,7 @@
             android:layout_weight="1"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:scaleType="centerInside"
-            android:src="@mipmap/ic_superlike"/>
+            android:src="@mipmap/ic_superlike" />
     </LinearLayout>
 
     <!--<LinearLayout
