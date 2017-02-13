@@ -25,62 +25,75 @@ import java.util.Iterator;
  * Created by rutvik on 09-07-2016 at 08:53 AM.
  */
 
-public class SyncedMapFragment extends SupportMapFragment {
+public class SyncedMapFragment extends SupportMapFragment
+{
 
     private MapViewWrapper mWrapper;
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+    {
         mWrapper = new MapViewWrapper(getActivity());
         mWrapper.addView(super.onCreateView(inflater, container, savedInstanceState));
         return mWrapper;
     }
 
 
-    public static class MapViewWrapper extends FrameLayout {
+    public static class MapViewWrapper extends FrameLayout
+    {
         private HashSet<MarkerAnimation> mAnimations = new HashSet<MarkerAnimation>();
 
 
-        public MapViewWrapper(Context context) {
+        public MapViewWrapper(Context context)
+        {
             super(context);
             setWillNotDraw(false);
         }
 
 
         @Override
-        protected void onDraw(Canvas canvas) {
+        protected void onDraw(Canvas canvas)
+        {
             super.onDraw(canvas);
 
             boolean shouldPost = false;
 
             Iterator<MarkerAnimation> iterator = mAnimations.iterator();
-            while (iterator.hasNext()) {
+            while (iterator.hasNext())
+            {
                 MarkerAnimation markerAnimation = iterator.next();
-                if (markerAnimation.animate()) {
+                if (markerAnimation.animate())
+                {
                     shouldPost = true;
-                } else {
+                } else
+                {
                     iterator.remove();
                 }
             }
 
-            if (shouldPost) {
+            if (shouldPost)
+            {
                 postInvalidateOnAnimation();
             }
         }
 
         @SuppressLint("NewApi")
-        public void postInvalidateOnAnimation() {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+        public void postInvalidateOnAnimation()
+        {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+            {
                 super.postInvalidateOnAnimation();
-            } else {
+            } else
+            {
                 ViewCompat.postInvalidateOnAnimation(this);
             }
         }
     }
 
 
-    private static class MarkerAnimation {
+    private static class MarkerAnimation
+    {
         final static Interpolator sInterpolator = new AccelerateDecelerateInterpolator();
 
         private final Marker mMarker;
@@ -91,7 +104,8 @@ public class SyncedMapFragment extends SupportMapFragment {
 
 
         public MarkerAnimation(Marker marker, LatLng finalPosition,
-                               long duration) {
+                               long duration)
+        {
             mMarker = marker;
             mStartPosition = marker.getPosition();
             mFinalPosition = finalPosition;
@@ -99,7 +113,8 @@ public class SyncedMapFragment extends SupportMapFragment {
             mStartTime = AnimationUtils.currentAnimationTimeMillis();
         }
 
-        public boolean animate() {
+        public boolean animate()
+        {
             // Calculate progress using interpolator
             long elapsed = AnimationUtils.currentAnimationTimeMillis() - mStartTime;
             float t = elapsed / (float) mDuration;
@@ -110,14 +125,17 @@ public class SyncedMapFragment extends SupportMapFragment {
         }
 
         @Override
-        public int hashCode() {
+        public int hashCode()
+        {
             // So we only get one animation for the same marker in our HashSet
             return mMarker.hashCode();
         }
 
         @Override
-        public boolean equals(Object o) {
-            if (o instanceof Marker) {
+        public boolean equals(Object o)
+        {
+            if (o instanceof Marker)
+            {
                 return mMarker.equals(o);
             }
             return super.equals(o);

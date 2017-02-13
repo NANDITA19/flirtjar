@@ -19,7 +19,8 @@ import butterknife.ButterKnife;
  * Created by rutvik on 2/1/2017 at 6:26 PM.
  */
 
-public class FragmentMap extends Fragment implements OnMapReadyCallback {
+public class FragmentMap extends Fragment implements OnMapReadyCallback
+{
 
     SyncedMapFragment syncedMapFragment;
 
@@ -27,7 +28,8 @@ public class FragmentMap extends Fragment implements OnMapReadyCallback {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
+    {
         View view = inflater.inflate(R.layout.fragment_map, container, false);
         ButterKnife.bind(this, view);
 
@@ -40,7 +42,8 @@ public class FragmentMap extends Fragment implements OnMapReadyCallback {
     }
 
     @Override
-    public void onMapReady(GoogleMap googleMap) {
+    public void onMapReady(GoogleMap googleMap)
+    {
         mMap = googleMap;
 
         mMap.getUiSettings().setMyLocationButtonEnabled(false);

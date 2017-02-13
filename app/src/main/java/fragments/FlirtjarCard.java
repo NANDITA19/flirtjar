@@ -24,7 +24,8 @@ import com.mindorks.placeholderview.annotations.swipe.SwipeOutState;
 
 
 @Layout(R.layout.flirtjar_card_view)
-public class FlirtjarCard {
+public class FlirtjarCard
+{
 
     @View(R.id.profileImageView)
     private ImageView profileImageView;
@@ -39,48 +40,56 @@ public class FlirtjarCard {
     private Context mContext;
     private SwipePlaceHolderView mSwipeView;
 
-    public FlirtjarCard(Context context, Profile profile, SwipePlaceHolderView swipeView) {
+    public FlirtjarCard(Context context, Profile profile, SwipePlaceHolderView swipeView)
+    {
         mContext = context;
         mProfile = profile;
         mSwipeView = swipeView;
     }
 
     @Resolve
-    private void onResolved() {
+    private void onResolved()
+    {
         Glide.with(mContext).load(mProfile.getImageUrl()).into(profileImageView);
         nameAgeTxt.setText(mProfile.getName() + ", " + mProfile.getAge());
         locationNameTxt.setText(mProfile.getLocation());
     }
 
     @Click(R.id.profileImageView)
-    private void onClick() {
+    private void onClick()
+    {
         Log.d("EVENT", "profileImageView click");
         mSwipeView.addView(this);
     }
 
     @SwipeOut
-    private void onSwipedOut() {
+    private void onSwipedOut()
+    {
         Log.d("EVENT", "onSwipedOut");
         mSwipeView.addView(this);
     }
 
     @SwipeCancelState
-    private void onSwipeCancelState() {
+    private void onSwipeCancelState()
+    {
         Log.d("EVENT", "onSwipeCancelState");
     }
 
     @SwipeIn
-    private void onSwipeIn() {
+    private void onSwipeIn()
+    {
         Log.d("EVENT", "onSwipedIn");
     }
 
     @SwipeInState
-    private void onSwipeInState() {
+    private void onSwipeInState()
+    {
         Log.d("EVENT", "onSwipeInState");
     }
 
     @SwipeOutState
-    private void onSwipeOutState() {
+    private void onSwipeOutState()
+    {
         Log.d("EVENT", "onSwipeOutState");
     }
 }

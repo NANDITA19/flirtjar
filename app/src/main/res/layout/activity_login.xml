@@ -1,135 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/activity_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
-    android:orientation="vertical"
-    android:paddingBottom="10dp"
-    android:paddingTop="10dp">
+    android:background="@color/background">
+
 
     <LinearLayout
-        android:id="@+id/layout_main"
+        android:id="@+id/bottom_panel"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:gravity="center"
         android:orientation="vertical">
 
-
-        <LinearLayout
-            android:id="@+id/layout_lbl"
+        <View
+            android:id="@+id/view1"
             android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="1dp"
+            android:background="@color/divider"/>
+
+        <TextView
+            android:id="@+id/lbl_privacy_terms1"
+            android:layout_width="280dp"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:visibility="gone">
+            android:layout_marginTop="10dp"
+            android:text="@string/privacy_policy_label_1"
+            android:textAlignment="center"
+            android:textColor="@color/divider"/>
 
-            <TextView
-                android:id="@+id/tv_lbl"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=" find  >  flirt  >  meet "
-                android:textColor="#79BADD"
-                android:textSize="28dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/layout_viewpager"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/lbl_privacy_terms2"
+            android:layout_width="280dp"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingTop="10dp">
+            android:layout_marginBottom="5dp"
+            android:text="@string/privacy_policy_label_2"
+            android:textAlignment="center"
+            android:textColor="@color/divider"/>
 
-            <android.support.v4.view.ViewPager
-                android:id="@+id/view_pager"
-                android:layout_width="250dp"
-                android:layout_height="350dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:paddingBottom="15dp"
-                android:paddingTop="15dp" />
-
-            <LinearLayout
-                android:id="@+id/layout_dots"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_alignParentBottom="true"
-                android:gravity="center"
-                android:orientation="horizontal" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/layout_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:paddingBottom="10dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp">
-
-            <com.facebook.login.widget.LoginButton xmlns:fb="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/btn_fbLogin"
-                style="@style/FacebookLoginButton"
-                android:layout_width="280dp"
-                android:layout_height="100dp"
-                android:layout_centerInParent="true"
-                android:layout_gravity="center_horizontal"
-                fb:com_facebook_login_text=""
-                fb:com_facebook_logout_text="" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/bottom_panel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:orientation="vertical">
-
-            <View
-                android:id="@+id/view"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/divider" />
-
-            <View
-                android:id="@+id/view1"
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_marginTop="1dp"
-                android:background="@color/divider" />
-
-            <LinearLayout
-                android:id="@+id/layout_privacy_text"
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_marginTop="15dp"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/lbl_privacy_terms1"
-                    android:layout_width="280dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/privacy_policy_label_1"
-                    android:textAlignment="center"
-                    android:textColor="@color/divider" />
-
-                <TextView
-                    android:id="@+id/lbl_privacy_terms2"
-                    android:layout_width="280dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/privacy_policy_label_2"
-                    android:textAlignment="center"
-                    android:textColor="@color/divider" />
-            </LinearLayout>
-        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+
+    <com.facebook.login.widget.LoginButton
+        xmlns:fb="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/btn_fbLogin"
+        style="@style/FacebookLoginButton"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/bottom_panel"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center_horizontal"
+        fb:com_facebook_login_text=""
+        fb:com_facebook_logout_text=""/>
+
+
+    <LinearLayout
+        android:id="@+id/layout_dots"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_above="@id/btn_fbLogin"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="horizontal"/>
+
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+</RelativeLayout>

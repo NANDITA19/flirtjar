@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/activity_login"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingBottom="10dp"
-    android:paddingLeft="10dp"
-    android:paddingRight="9dp"
-    android:paddingTop="10dp">
+              android:id="@+id/activity_login"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:paddingBottom="10dp"
+              android:paddingLeft="10dp"
+              android:paddingRight="9dp"
+              android:paddingTop="10dp">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -32,7 +32,7 @@
                     android:paddingLeft="10dp"
                     android:text="Discovery Settings"
                     android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"/>
 
             </LinearLayout>
 
@@ -56,7 +56,7 @@
                     android:paddingTop="10dp"
                     android:text="Show me"
                     android:textColor="#79BADD"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"/>
 
                 <LinearLayout
                     android:id="@+id/layout_man"
@@ -73,7 +73,7 @@
                         android:text="Man"
                         android:textColor="@color/splash_font"
                         android:textSize="16sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"/>
 
                     <Switch
                         android:id="@+id/sw_man"
@@ -83,7 +83,7 @@
                         android:gravity="center_vertical"
                         android:textSize="16sp"
                         android:textStyle="bold"
-                        android:theme="@style/SwitchTheme" />
+                        android:theme="@style/SwitchTheme"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -101,7 +101,7 @@
                         android:text="Woman"
                         android:textColor="@color/splash_font"
                         android:textSize="16sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"/>
 
                     <Switch
                         android:id="@+id/sw_woman"
@@ -111,7 +111,7 @@
                         android:gravity="center_horizontal"
                         android:textSize="16sp"
                         android:textStyle="bold"
-                        android:theme="@style/SwitchTheme" />
+                        android:theme="@style/SwitchTheme"/>
                 </LinearLayout>
 
 
@@ -144,7 +144,7 @@
                         android:paddingTop="10dp"
                         android:text="Show age group"
                         android:textColor="#79BADD"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"/>
 
                     <TextView
                         android:id="@+id/tv_lbl_age_num"
@@ -158,7 +158,7 @@
                         android:text="18-50+"
                         android:textColor="@color/black"
                         android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -169,10 +169,10 @@
                     android:orientation="horizontal">
 
                     <com.edmodo.rangebar.RangeBar xmlns:custom="http://schemas.android.com/apk/res-auto"
-                        android:id="@+id/rangebar1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        custom:tickCount="20" />
+                                                  android:id="@+id/rangebar1"
+                                                  android:layout_width="match_parent"
+                                                  android:layout_height="wrap_content"
+                                                  custom:tickCount="20"/>
 
                 </LinearLayout>
             </LinearLayout>
@@ -199,7 +199,7 @@
                     android:paddingTop="10dp"
                     android:text="Show me on jar"
                     android:textColor="#79BADD"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"/>
 
                 <Switch
                     android:id="@+id/sw_show_me_on_jar"
@@ -211,7 +211,7 @@
                     android:paddingTop="10dp"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:theme="@style/SwitchTheme" />
+                    android:theme="@style/SwitchTheme"/>
 
             </LinearLayout>
 
@@ -236,7 +236,7 @@
                     android:paddingTop="10dp"
                     android:text="Show me on jar"
                     android:textColor="#79BADD"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"/>
 
                 <Switch
                     android:id="@+id/sw_show_me_near_by"
@@ -248,7 +248,7 @@
                     android:paddingTop="10dp"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:theme="@style/SwitchTheme" />
+                    android:theme="@style/SwitchTheme"/>
 
             </LinearLayout>
 
@@ -265,7 +265,7 @@
                     android:paddingLeft="10dp"
                     android:text="App Settings"
                     android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"/>
 
             </LinearLayout>
 
@@ -296,7 +296,7 @@
                         android:paddingTop="10dp"
                         android:text="Show me distance in"
                         android:textColor="#79BADD"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"/>
 
                     <TextView
                         android:id="@+id/lbl_distnace_tag"
@@ -309,7 +309,7 @@
                         android:paddingTop="10dp"
                         android:text="km"
                         android:textColor="@color/black"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"/>
 
                 </LinearLayout>
 
@@ -330,7 +330,7 @@
                         android:text="km"
                         android:textAllCaps="false"
                         android:textColor="@color/background"
-                        android:textSize="14sp" />
+                        android:textSize="14sp"/>
 
 
                     <Button
@@ -346,7 +346,7 @@
                         android:text="m"
                         android:textAllCaps="false"
                         android:textColor="@color/black"
-                        android:textSize="14sp" />
+                        android:textSize="14sp"/>
 
                 </LinearLayout>
 
@@ -365,7 +365,7 @@
                     android:paddingLeft="10dp"
                     android:text="Contact Us"
                     android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"/>
 
             </LinearLayout>
 
@@ -391,7 +391,7 @@
                     android:paddingTop="10dp"
                     android:text="Help &amp; Support"
                     android:textColor="#79BADD"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"/>
 
 
             </LinearLayout>
@@ -418,7 +418,7 @@
                     android:paddingTop="10dp"
                     android:text="Share Flirtjar"
                     android:textColor="#79BADD"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"/>
 
 
             </LinearLayout>
@@ -445,7 +445,7 @@
                     android:paddingTop="10dp"
                     android:text="Share Flirtjar"
                     android:textColor="#79BADD"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"/>
 
                 <TextView
                     android:id="@+id/tv_version"
@@ -457,7 +457,7 @@
                     android:paddingTop="10dp"
                     android:text="Version 1.0.0 (android)"
                     android:textColor="@color/black"
-                    android:textSize="11sp" />
+                    android:textSize="11sp"/>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

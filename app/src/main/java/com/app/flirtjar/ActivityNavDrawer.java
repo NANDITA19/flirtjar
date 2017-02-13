@@ -1,6 +1,7 @@
 package com.app.flirtjar;
 
-import android.graphics.Color;
+import android.content.Intent;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -13,36 +14,78 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
-import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
+import com.facebook.AccessToken;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import fragments.FragmentChat;
 import fragments.FragmentJar;
 import fragments.FragmentMap;
 
 public class ActivityNavDrawer extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener
+        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener
 {
 
-
     FragmentManager fragmentManager;
+
+    @BindView(R.id.tv_navLogoText)
+    TextView tvNavLogoText;
+
+    @BindView(R.id.btn_nearby)
+    ImageButton btnNearby;
+
+    @BindView(R.id.btn_jar)
+    ImageButton btnJar;
+
+    @BindView(R.id.btn_chat)
+    ImageButton btnChat;
+
+    @BindView(R.id.ll_nearby)
+    LinearLayout llNearby;
+
+    @BindView(R.id.ll_jar)
+    LinearLayout llJar;
+
+    @BindView(R.id.ll_chat)
+    LinearLayout llChat;
+
+    int currentPage = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nav_drawer);
+
+        ButterKnife.bind(this);
+
+        final Typeface pacifico = Typeface.createFromAsset(getAssets(), "font/Pacifico-Regular.ttf");
+
+        tvNavLogoText.setTypeface(pacifico);
+
+        getFacebookAuthToken();
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setTitle("Flirt Jar");
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setTitle("");
 
         fragmentManager = getSupportFragmentManager();
 
-        setupBottomBar();
+        setupBottomBar(1);
+
+        btnJar.setSelected(true);
+
+        llNearby.setOnClickListener(this);
+        llJar.setOnClickListener(this);
+        llChat.setOnClickListener(this);
 
 
         //FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -56,7 +99,7 @@ public class ActivityNavDrawer extends AppCompatActivity
             }
         });*/
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        final DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar,
@@ -64,14 +107,40 @@ public class ActivityNavDrawer extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        Drawable drawable = ResourcesCompat.getDrawable(getResources(),
-                R.drawable.ic_jar_active, this.getTheme());
-
-        toggle.setHomeAsUpIndicator(drawable);
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        navigationView.getHeaderView(0).findViewById(R.id.ib_settings)
+                .setOnClickListener(new View.OnClickListener()
+                {
+                    @Override
+                    public void onClick(View view)
+                    {
+                        startActivity(new Intent(ActivityNavDrawer.this, ActivitySetting.class));
+                    }
+                });
+
+        toggle.setDrawerIndicatorEnabled(false);
+
+        Drawable drawable = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_jar_active,
+                getTheme());
+
+        toggle.setHomeAsUpIndicator(drawable);
+
+        toggle.setToolbarNavigationClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                if (drawer.isDrawerVisible(GravityCompat.START))
+                {
+                    drawer.closeDrawer(GravityCompat.START);
+                } else
+                {
+                    drawer.openDrawer(GravityCompat.START);
+                }
+            }
+        });
 
         fragmentManager.beginTransaction()
                 .replace(R.id.fl_fragmentContainer, FragmentJar.newInstance())
@@ -79,61 +148,53 @@ public class ActivityNavDrawer extends AppCompatActivity
 
     }
 
-    private void setupBottomBar()
+    private void getFacebookAuthToken()
     {
-        AHBottomNavigation bottomNavigation = (AHBottomNavigation) findViewById(R.id.bottom_navigation);
+        if (AccessToken.getCurrentAccessToken() == null)
+        {
+            Intent i = new Intent(this, ActivityLogin.class);
+            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(i);
+        }
+    }
 
-        // Create items
-        AHBottomNavigationItem item1 = new AHBottomNavigationItem("nearby", R.mipmap.ic_nearby_inactive);
-        AHBottomNavigationItem item2 = new AHBottomNavigationItem("jar", R.mipmap.ic_jar_active);
-        AHBottomNavigationItem item3 = new AHBottomNavigationItem("chat", R.mipmap.ic_chat_inactive);
-
-        // Add items
-        bottomNavigation.addItem(item1);
-        bottomNavigation.addItem(item2);
-        bottomNavigation.addItem(item3);
-
-        bottomNavigation.setTitleState(AHBottomNavigation.TitleState.ALWAYS_SHOW);
-
-        bottomNavigation.setCurrentItem(1);
-
-        bottomNavigation.setAccentColor(Color.parseColor("#F63D2B"));
-        bottomNavigation.setInactiveColor(Color.parseColor("#747474"));
-
-        bottomNavigation.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
-            @Override
-            public boolean onTabSelected(int position, boolean wasSelected) {
-                switch (position) {
-                    case 0:
-                        fragmentManager.beginTransaction()
-                                .replace(R.id.fl_fragmentContainer, new FragmentMap())
-                                .commitAllowingStateLoss();
-                        return true;
-
-                    case 1:
-                        fragmentManager.beginTransaction()
-                                .replace(R.id.fl_fragmentContainer, FragmentJar.newInstance())
-                                .commitAllowingStateLoss();
-                        return true;
-
-                    case 2:
-                        fragmentManager.beginTransaction()
-                                .replace(R.id.fl_fragmentContainer, FragmentChat.newInstance())
-                                .commitAllowingStateLoss();
-                        return true;
-
-                    default:
-                        return true;
+    private void setupBottomBar(int position)
+    {
+        switch (position)
+        {
+            case 0:
+                if (currentPage != position)
+                {
+                    currentPage = position;
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.fl_fragmentContainer, new FragmentMap())
+                            .commitAllowingStateLoss();
                 }
-            }
-        });
-        bottomNavigation.setOnNavigationPositionListener(new AHBottomNavigation.OnNavigationPositionListener() {
-            @Override
-            public void onPositionChange(int y) {
-                // Manage the new y position
-            }
-        });
+                return;
 
+            case 1:
+                if (currentPage != position)
+                {
+                    currentPage = position;
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.fl_fragmentContainer, FragmentJar.newInstance())
+                            .commitAllowingStateLoss();
+                }
+                return;
+
+            case 2:
+                if (currentPage != position)
+                {
+                    currentPage = position;
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.fl_fragmentContainer, FragmentChat.newInstance())
+                            .commitAllowingStateLoss();
+                    return;
+                }
+
+            default:
+                return;
+        }
     }
 
     @Override
@@ -204,5 +265,34 @@ public class ActivityNavDrawer extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+
+    @Override
+    public void onClick(View view)
+    {
+        switch (view.getId())
+        {
+            case R.id.ll_nearby:
+                setupBottomBar(0);
+                btnNearby.setSelected(true);
+                btnJar.setSelected(false);
+                btnChat.setSelected(false);
+                break;
+
+            case R.id.ll_jar:
+                setupBottomBar(1);
+                btnNearby.setSelected(false);
+                btnJar.setSelected(true);
+                btnChat.setSelected(false);
+                break;
+
+            case R.id.ll_chat:
+                setupBottomBar(2);
+                btnNearby.setSelected(false);
+                btnJar.setSelected(false);
+                btnChat.setSelected(true);
+                break;
+        }
     }
 }

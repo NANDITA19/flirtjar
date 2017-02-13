@@ -7,6 +7,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
+        <item name="android:homeAsUpIndicator">@mipmap/ic_jar_active</item>
     </style>
 
     <style name="SettingTheme" parent="Theme.AppCompat.Light">
@@ -30,7 +31,9 @@
     <style name="FacebookLoginButton">
         <item name="android:textSize">25sp</item>
         <item name="android:background">@drawable/login_with_facebook</item>
-        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_height">100dp</item>
+        <item name="android:layout_width">200dp</item>
         <item name="android:layout_marginBottom">10dp</item>
         <item name="android:layout_gravity">center_horizontal</item>
     </style>
@@ -40,12 +43,16 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
     <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
         <item name="spinBars">true</item>
+    </style>
+
+    <style name="splashScreen" parent="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
+        <item name="android:background">@drawable/splash</item>
     </style>
 
 </resources>

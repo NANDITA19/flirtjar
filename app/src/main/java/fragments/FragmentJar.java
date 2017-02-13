@@ -50,7 +50,8 @@ public class FragmentJar extends Fragment
                         .setSwipeOutMsgLayoutId(R.layout.flirtjar_swipe_out_msg_view));
 
 
-        for (Profile profile : Utils.loadProfiles(getActivity())) {
+        for (Profile profile : Utils.loadProfiles(getActivity()))
+        {
             mSwipeView.addView(new FlirtjarCard(getActivity(), profile, mSwipeView));
         }
 
